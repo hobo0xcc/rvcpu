@@ -26,18 +26,22 @@ module rom(
     );
 
     logic [7:0] mem[0:255];
-    int fd, status;
-    int start, e, size;
+    // int fd, status;
+    // int start, e, size;
+    // initial begin
+    //     fd = $fopen("C:\\Users\\slime\\work\\src\\rvml\\work\\test.bin", "rb");
+    //     $fseek(fd, 0, 2);
+    //     e = $ftell(fd);
+    //     $fseek(fd, 0, 0);
+    //     start = $ftell(fd);
+    //     status = $fread(mem, fd, start, e - start);
+    //     $display("status = %d", status);
+    //     $display("mem[0] = %x", mem[0]);
+    //     $fclose(fd);
+    // end
+
     initial begin
-        fd = $fopen("C:\\Users\\slime\\work\\src\\riscv\\main.bin", "rb");
-        $fseek(fd, 0, 2);
-        e = $ftell(fd);
-        $fseek(fd, 0, 0);
-        start = $ftell(fd);
-        status = $fread(mem, fd, start, e - start);
-        $display("status = %d", status);
-        $display("mem[0] = %x", mem[0]);
-        $fclose(fd);
+        $readmemh("fib.mem", mem);
     end
 
     assign data[7:0] = mem[addr];

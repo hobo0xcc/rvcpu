@@ -1,0 +1,147 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x555C7D8EF1E1ED7",
+      "device": "xc7z020clg400-1",
+      "name": "design_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2020.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "top_wrapper_0": ""
+    },
+    "ports": {
+      "CLK": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "RESET",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "design_1_CLK",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      },
+      "RESET": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "SWITCH": {
+        "direction": "I",
+        "left": "3",
+        "right": "0"
+      },
+      "LED": {
+        "direction": "O",
+        "left": "3",
+        "right": "0"
+      }
+    },
+    "components": {
+      "top_wrapper_0": {
+        "vlnv": "xilinx.com:module_ref:top_wrapper:1.0",
+        "xci_name": "design_1_top_wrapper_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "top_wrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_CLK",
+                "value_src": "default_prop"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "switch": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "led": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          }
+        }
+      }
+    },
+    "nets": {
+      "SWITCH_1": {
+        "ports": [
+          "SWITCH",
+          "top_wrapper_0/switch"
+        ]
+      },
+      "top_wrapper_0_led": {
+        "ports": [
+          "top_wrapper_0/led",
+          "LED"
+        ]
+      },
+      "RESET_1": {
+        "ports": [
+          "RESET",
+          "top_wrapper_0/reset"
+        ]
+      },
+      "CLK_1": {
+        "ports": [
+          "CLK",
+          "top_wrapper_0/clk"
+        ]
+      }
+    }
+  }
+}

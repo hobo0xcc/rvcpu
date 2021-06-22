@@ -23,7 +23,7 @@
 module top_tb(
 
     );
-    logic clk = 0;
+    logic clk = '0;
     logic reset = '0;
     logic [3:0] led = 4'b0000;
     logic [3:0] switch = 4'b0000;
@@ -34,6 +34,8 @@ module top_tb(
         clk = 1'b0;
         #5;
     end
+
+    design_1_wrapper _design(.CLK(clk), .LED(led), .RESET(reset), .SWITCH(switch));
     
-    mother_board mother_board(.clk, .reset, .switch, .led);
+    // mother_board mother_board(.clk, .reset, .switch, .led);
 endmodule

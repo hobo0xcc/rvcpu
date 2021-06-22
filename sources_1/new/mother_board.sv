@@ -28,7 +28,25 @@ module mother_board(
     );
     
     logic [31:0] instr;
-    logic [31:0] addr;
-    cpu cpu(.clk, .reset, .switch, .led, .addr, .instr_raw(instr));
-    rom rom(.addr, .data(instr));
+    logic [31:0] addr_rom;
+    logic [31:0] read_addr;
+    logic [31:0] write_addr;
+    logic read_enable;
+    logic write_enable;
+    logic [31:0] write_data;
+    logic [3:0] write_strb;
+    logic [31:0] read_data;
+    logic [3:0] read_strb;
+
+    cpu cpu(.clk, .reset, .switch, .led, .addr_rom, .instr_raw(instr),
+        .read_addr,
+        .write_addr,
+        .read_enable,
+        .write_enable,
+        .write_data,
+        .write_strb,
+        .read_data,
+        .read_strb);
+    rom rom(.addr(addr_rom), .data(instr));
+    ram ram(.read_addr, .write_addr, .read_enable, .write_enable, .write_data, .write_strb, .read_data, .read_strb);
 endmodule

@@ -28,6 +28,10 @@ module top(
     );
     
     logic clk;
-    prescaler prescaler(.clk(pin_clk), .slow_clk(clk));
+    // logic [15:0] read_addr_large;
+    // assign read_addr = read_addr_large[13:0];
+    // logic [15:0] write_addr_large;
+    // assign write_addr = write_addr_large[13:0];
+    prescaler #(.CLK_THRESHOLD(32'd100_000_00)) prescaler (.clk(pin_clk), .slow_clk(clk));
     mother_board mother_board(.clk, .reset(pin_reset), .switch(pin_switch), .led(pin_led));
 endmodule
